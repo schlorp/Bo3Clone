@@ -1,0 +1,15 @@
+extends Node
+
+enum GunType{
+	PISTOL,
+	RIFLE,
+	SHOTGUN,
+	SNIPER
+}
+
+enum FireMode{
+	SEMI_AUTOMATIC,
+	AUTOMATIC,
+	BURST
+}
+

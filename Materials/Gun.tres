@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://gci24wbhg73c"]
+
+[ext_resource type="Texture2D" uid="uid://dcudgcp34xole" path="res://Textures/kenney_prototype-textures/PNG/Green/texture_09.png" id="1_axtu8"]
+
+[resource]
+resource_name = "Gun"
+cull_mode = 2
+albedo_texture = ExtResource("1_axtu8")
+uv1_triplanar = true
