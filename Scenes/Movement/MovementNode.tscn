@@ -8,7 +8,7 @@ script = ExtResource("1_hajue")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=633701025]
 offset_right = 300.0
-offset_bottom = 27.0
+offset_bottom = 56.0
 text = "--movementstatedebugtext--"
 fit_content = true
 script = ExtResource("2_hdc0v")

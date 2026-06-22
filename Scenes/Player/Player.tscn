@@ -28,6 +28,7 @@ shape = SubResource("CapsuleShape3D_l3ax4")
 
 [node name="MovementNode" parent="." unique_id=848334543 node_paths=PackedStringArray("input_parser") instance=ExtResource("2_ft8w5")]
 input_parser = NodePath("../PlayerInputParseNode")
-movement_speed = 250.0
+movement_speed = 350.0
+jump_force = 3.0
 
 [node name="PlayerInputParseNode" parent="." unique_id=929400039 instance=ExtResource("1_ft8w5")]

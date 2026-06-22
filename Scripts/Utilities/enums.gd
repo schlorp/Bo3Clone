@@ -13,7 +13,13 @@ enum FireMode{
 	BURST
 }
 
-enum PlayerMovementState{
+enum PlayerGroundState{
 	ON_GROUND,
 	IN_AIR,
+}
+
+enum PlayerMovementState{
+	IDLE,
+	WALKING,
+	SPRINTING
 }

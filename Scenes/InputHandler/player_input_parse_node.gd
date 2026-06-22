@@ -18,6 +18,8 @@ signal on_switch_fire_mode_input_just_pressed()
 
 signal on_item_switch_input(index: int)
 
+signal on_sprint_input(is_sprinting: bool)
+
 func _process(delta: float) -> void:
 	handle_movement_input()
 	handle_mouse_input()
@@ -25,6 +27,7 @@ func _process(delta: float) -> void:
 	handle_fire_mode_switch_input()
 	handle_item_switch_input()
 	handle_jump_input()
+	handle_sprint_input()
 
 func handle_movement_input() -> void:
 	var movement_vector := Vector3.ZERO
@@ -70,3 +73,9 @@ func handle_item_switch_input() -> void:
 func handle_jump_input() -> void:
 	if Input.is_action_just_pressed("game_jump"):
 		emit_signal("on_jump_input_just_pressed")
+
+func handle_sprint_input() -> void:
+	if Input.is_action_pressed("game_sprint"):
+		emit_signal("on_sprint_input", true)
+	else:
+		emit_signal("on_sprint_input", false)
