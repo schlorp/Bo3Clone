@@ -13,3 +13,7 @@ enum FireMode{
 	BURST
 }
 
+enum PlayerMovementState{
+	ON_GROUND,
+	IN_AIR,
+}

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://drslcs0k4hvv3"]
+
+[ext_resource type="PackedScene" uid="uid://doyh6f8ioj78r" path="res://Scenes/InputHandler/PlayerInputParseNode.tscn" id="1_ft8w5"]
+[ext_resource type="Script" uid="uid://bn0l0rve6dufo" path="res://Scenes/Player/camera_controller.gd" id="1_h54ih"]
+[ext_resource type="Script" uid="uid://bjgv2ocvs2xnr" path="res://Scripts/Player/player.gd" id="1_t26db"]
+[ext_resource type="PackedScene" uid="uid://cdcsm1ppijxfo" path="res://Scenes/Movement/MovementNode.tscn" id="2_ft8w5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l3ax4"]
+
+[node name="Player" type="CharacterBody3D" unique_id=728224122 node_paths=PackedStringArray("movement_node", "player_input_node")]
+script = ExtResource("1_t26db")
+movement_node = NodePath("MovementNode")
+player_input_node = NodePath("PlayerInputParseNode")
+
+[node name="Neck" type="Node3D" parent="." unique_id=1464745721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51468015, 0)
+script = ExtResource("1_h54ih")
+
+[node name="Recoil" type="Node3D" parent="Neck" unique_id=1154748864]
+
+[node name="Camera3D" type="Camera3D" parent="Neck/Recoil" unique_id=1086442252]
+near = 0.001
+
+[node name="ItemHolder" type="Node3D" parent="Neck/Recoil/Camera3D" unique_id=1222290975]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1273782557]
+shape = SubResource("CapsuleShape3D_l3ax4")
+
+[node name="MovementNode" parent="." unique_id=848334543 node_paths=PackedStringArray("input_parser") instance=ExtResource("2_ft8w5")]
+input_parser = NodePath("../PlayerInputParseNode")
+movement_speed = 250.0
+
+[node name="PlayerInputParseNode" parent="." unique_id=929400039 instance=ExtResource("1_ft8w5")]

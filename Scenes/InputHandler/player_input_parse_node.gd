@@ -3,6 +3,8 @@ class_name PlayerInputParseNode
 
 signal on_movement_input(vector: Vector3)
 
+signal on_jump_input_just_pressed()
+
 signal on_fire_input_just_pressed()
 signal on_fire_input()
 signal on_fire_input_released()
@@ -22,6 +24,7 @@ func _process(delta: float) -> void:
 	handle_reload_input()
 	handle_fire_mode_switch_input()
 	handle_item_switch_input()
+	handle_jump_input()
 
 func handle_movement_input() -> void:
 	var movement_vector := Vector3.ZERO
@@ -63,3 +66,7 @@ func handle_item_switch_input() -> void:
 		emit_signal("on_item_switch_input", 0)
 	if Input.is_action_just_pressed("game_switch_key_2"):
 		emit_signal("on_item_switch_input", 1)
+
+func handle_jump_input() -> void:
+	if Input.is_action_just_pressed("game_jump"):
+		emit_signal("on_jump_input_just_pressed")
