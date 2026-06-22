@@ -5,7 +5,6 @@ extends RichTextLabel
 var ground_state_text: String = "ground state = "
 var movement_state_text: String = "movement state = "
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	movement_node.connect("ground_state_changed", Callable(self, "on_ground_state_changed"))
 	movement_node.connect("movement_state_changed", Callable(self, "on_movement_state_changed"))

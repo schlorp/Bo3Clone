@@ -20,6 +20,8 @@ signal on_item_switch_input(index: int)
 
 signal on_sprint_input(is_sprinting: bool)
 
+signal on_crouch_input(is_crouching: bool)
+
 func _process(delta: float) -> void:
 	handle_movement_input()
 	handle_mouse_input()
@@ -28,6 +30,7 @@ func _process(delta: float) -> void:
 	handle_item_switch_input()
 	handle_jump_input()
 	handle_sprint_input()
+	handle_crouch_input()
 
 func handle_movement_input() -> void:
 	var movement_vector := Vector3.ZERO
@@ -79,3 +82,9 @@ func handle_sprint_input() -> void:
 		emit_signal("on_sprint_input", true)
 	else:
 		emit_signal("on_sprint_input", false)
+
+func handle_crouch_input() -> void:
+	if Input.is_action_pressed("game_crouch"):
+		emit_signal("on_crouch_input", true)
+	else:
+		emit_signal("on_crouch_input", false)

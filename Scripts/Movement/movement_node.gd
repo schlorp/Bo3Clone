@@ -6,6 +6,9 @@ class_name MovementNode
 
 @export var walk_speed: float = 350.0
 @export var sprint_speed: float = 450.0
+var crouch_speed: float = walk_speed * 0.5
+
+@export var initial_slide_boost: float = 0.0
 
 var _current_movement_speed: float = walk_speed
 
@@ -26,7 +29,7 @@ func _ready() -> void:
 	input_parser.connect("on_movement_input", Callable(self, "handle_movement_input"))
 	input_parser.connect("on_jump_input_just_pressed", Callable(self, "jump"))
 	input_parser.connect("on_sprint_input", Callable(self, "sprint"))
-
+	input_parser.connect("on_crouch_input", Callable(self, "crouch"))
 
 func handle_movement_input(vector: Vector3) -> void:
 	if _player_ground_state == Enums.PlayerGroundState.IN_AIR:
@@ -70,9 +73,16 @@ func jump() -> void:
 
 
 func sprint(is_sprinting: bool) -> void:
-	if is_sprinting:
+	if is_sprinting && _player_ground_state == Enums.PlayerGroundState.ON_GROUND && _player_movement_state != Enums.PlayerMovementState.CROUCHING:
 		_current_movement_speed = sprint_speed
-	else:
+	elif !is_sprinting && _player_movement_state == Enums.PlayerMovementState.SPRINTING:
+		_current_movement_speed = walk_speed
+
+
+func crouch(is_crouching: bool) -> void:
+	if is_crouching && _player_ground_state == Enums.PlayerGroundState.ON_GROUND && _player_movement_state != Enums.PlayerMovementState.SPRINTING:
+		_current_movement_speed = crouch_speed
+	elif !is_crouching && _player_movement_state == Enums.PlayerMovementState.CROUCHING:
 		_current_movement_speed = walk_speed
 
 
@@ -90,11 +100,18 @@ func update_movement_state() -> void:
 		_player_movement_state = Enums.PlayerMovementState.IDLE
 		return
 
-	if _movement_vector.x == 0 and _movement_vector.z == 0:
-		_player_movement_state = Enums.PlayerMovementState.IDLE
-	elif _current_movement_speed == walk_speed:
-		_player_movement_state = Enums.PlayerMovementState.WALKING
-	elif _current_movement_speed == sprint_speed:
+	
+
+	if _current_movement_speed == sprint_speed:
 		_player_movement_state = Enums.PlayerMovementState.SPRINTING
+	
+	elif _current_movement_speed == crouch_speed:
+		_player_movement_state = Enums.PlayerMovementState.CROUCHING
+
+	elif _movement_vector.x == 0 and _movement_vector.z == 0:
+		_player_movement_state = Enums.PlayerMovementState.IDLE
+
+	else:
+		_player_movement_state = Enums.PlayerMovementState.WALKING
 
 	emit_signal("movement_state_changed", _player_movement_state)

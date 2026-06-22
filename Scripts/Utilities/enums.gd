@@ -21,5 +21,7 @@ enum PlayerGroundState{
 enum PlayerMovementState{
 	IDLE,
 	WALKING,
-	SPRINTING
+	SPRINTING,
+	CROUCHING,
+	SLIDING,
 }
