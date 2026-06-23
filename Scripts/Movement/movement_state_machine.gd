@@ -2,7 +2,7 @@ extends StateMachine
 
 
 @export var movement_node: MovementNode
-
+var is_sprinting: bool = false
 
 func fill_available_states() -> void:
 	var idle_state = IdleState.new(self)
@@ -28,6 +28,7 @@ func fill_available_states() -> void:
 func _ready() -> void:
 	super._ready()
 	switch_to_state("IdleState")
+	movement_node.input_parser.connect("on_sprint_input", Callable(self, "check_if_sprinting"))
 
 
 func _process(delta: float) -> void:
@@ -35,17 +36,5 @@ func _process(delta: float) -> void:
 	print("Current State: ", _current_state.state_name)
 
 
-func is_sprinting() -> bool:
-	return movement_node.current_movement_speed == movement_node.sprint_speed
-
-func is_crouching() -> bool:
-	return movement_node.current_movement_speed == movement_node.crouch_speed
-
-func is_jumping() -> bool:
-	return movement_node._player_ground_state == Enums.PlayerGroundState.IN_AIR
-
-func is_moving() -> bool:
-	return movement_node.movement_vector.x != 0 or movement_node.movement_vector.z != 0
-
-func is_not_moving() -> bool:
-	return movement_node.movement_vector.x == 0 and movement_node.movement_vector.z == 0
+func check_if_sprinting(_is_sprinting: bool) -> void:
+	is_sprinting = _is_sprinting

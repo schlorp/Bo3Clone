@@ -6,32 +6,37 @@ func _init(_statemachine: StateMachine) -> void:
 	super._init(_statemachine)
 	state_name = "WalkingState"
 
+
 func setup_transitions() -> void:
 	add_transition(
 		Transition.new(
 			self,
-			state_machine.available_states["IdleState"],
-			Callable(state_machine, "is_not_moving")
+			state_machine.available_states["CrouchState"],
+			func():	return state_machine.movement_node.is_crouching()
 		)
 	)
 	add_transition(
 		Transition.new(
 			self,
 			state_machine.available_states["JumpingState"],
-			Callable(state_machine, "is_jumping")
-		)
-	)
-	add_transition(
-		Transition.new(
-			self,
-			state_machine.available_states["CrouchState"],
-			Callable(state_machine, "is_crouching")
+			func():	return !state_machine.movement_node.is_grounded()
 		)
 	)
 	add_transition(
 		Transition.new(
 			self,
 			state_machine.available_states["SprintingState"],
-			Callable(state_machine, "is_sprinting")
+			func():	return state_machine.is_sprinting && state_machine.movement_node.is_grounded()
 		)
 	)
+	add_transition(
+		Transition.new(
+			self,
+			state_machine.available_states["IdleState"],
+			func():	return !state_machine.movement_node.is_moving()
+		)
+	)
+
+
+func enter_state() -> void:
+	state_machine.movement_node.current_movement_speed = state_machine.movement_node.walk_speed
