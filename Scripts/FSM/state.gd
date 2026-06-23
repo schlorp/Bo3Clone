@@ -18,7 +18,7 @@ var state_name: String:
     set(value):
         state_name = value
 
-var _state_machine: StateMachine
+var state_machine: StateMachine
 
 
 # Constructor:
@@ -29,7 +29,7 @@ func _init(_statemachine: StateMachine) -> void:
     # Remove null and set your own state name
     state_name = "" # "BaseState"
 
-    _state_machine = _statemachine
+    state_machine = _statemachine
 
 
 # Called when the state is entered
@@ -46,6 +46,9 @@ func update_state() -> void:
 func exit_state() -> void:
     pass
 
+func setup_transitions() -> void:
+    # Override this function to add transitions to the state
+    pass
 
 # Add a transition to this state
 func add_transition(transition: Transition) -> void:

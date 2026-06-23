@@ -20,4 +20,4 @@ func on_movement_state_changed(state: Enums.PlayerMovementState) -> void:
 	movement_state_text = "movement state = " + str(Enums.PlayerMovementState.keys()[state])
 
 func process_text() -> void:
-	text = ground_state_text + "speed = " + str(movement_node._current_movement_speed) + "\n" + movement_state_text
+	text = ground_state_text + "speed = " + str(movement_node.current_movement_speed) + "\n" + movement_state_text

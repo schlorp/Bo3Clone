@@ -1,7 +1,7 @@
 extends StateMachine
 
 
-var movement_node: MovementNode
+@export var movement_node: MovementNode
 
 
 func fill_available_states() -> void:
@@ -21,6 +21,9 @@ func fill_available_states() -> void:
 		slide_state.state_name: slide_state
 	}
 
+	for state in _available_states.values():
+		state.setup_transitions()
+
 
 func _ready() -> void:
 	super._ready()
@@ -28,4 +31,5 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	pass
+	super._process(delta)
+	print("Current State: ", _current_state.state_name)

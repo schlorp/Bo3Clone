@@ -10,7 +10,7 @@ var crouch_speed: float = walk_speed * 0.5
 
 @export var initial_slide_boost: float = 0.0
 
-var _current_movement_speed: float = walk_speed
+var current_movement_speed: float = walk_speed
 
 @export var jump_force: float = 2.5
 
@@ -45,9 +45,9 @@ func handle_movement_input(vector: Vector3) -> void:
 
 func apply_movementvector(delta: float) -> void:
 	if _player_ground_state == Enums.PlayerGroundState.IN_AIR:
-		parent_character.velocity = _jump_basis * movement_vector * _current_movement_speed * delta 
+		parent_character.velocity = _jump_basis * movement_vector * current_movement_speed * delta 
 	else: 
-		parent_character.velocity = parent_character.transform.basis * movement_vector * _current_movement_speed * delta 
+		parent_character.velocity = parent_character.transform.basis * movement_vector * current_movement_speed * delta 
 
 	parent_character.move_and_slide()
 
@@ -64,8 +64,8 @@ func decellerate_slide(delta: float) -> void:
 
 	var deceleration_rate: float = 5.0
 	if _player_movement_state == Enums.PlayerMovementState.SLIDING:
-		_current_movement_speed = max(_current_movement_speed - deceleration_rate * delta, walk_speed)
-		if _current_movement_speed == walk_speed:
+		current_movement_speed = max(current_movement_speed - deceleration_rate * delta, walk_speed)
+		if current_movement_speed == walk_speed:
 			_player_movement_state = Enums.PlayerMovementState.WALKING
 
 
@@ -84,9 +84,9 @@ func jump() -> void:
 
 func sprint(is_sprinting: bool) -> void:
 	if is_sprinting && _player_ground_state == Enums.PlayerGroundState.ON_GROUND && _player_movement_state != Enums.PlayerMovementState.CROUCHING:
-		_current_movement_speed = sprint_speed
+		current_movement_speed = sprint_speed
 	elif !is_sprinting && _player_movement_state == Enums.PlayerMovementState.SPRINTING:
-		_current_movement_speed = walk_speed
+		current_movement_speed = walk_speed
 
 
 func slide() -> void:
@@ -98,7 +98,7 @@ func slide() -> void:
 	# set the movement state to sliding
 	_player_movement_state = Enums.PlayerMovementState.SLIDING
 
-	_current_movement_speed = sprint_speed + initial_slide_boost
+	current_movement_speed = sprint_speed + initial_slide_boost
 
 
 
@@ -109,9 +109,9 @@ func crouch(is_crouching: bool) -> void:
 		if _player_movement_state == Enums.PlayerMovementState.SPRINTING:
 			slide()
 		else:
-			_current_movement_speed = crouch_speed
+			current_movement_speed = crouch_speed
 	elif !is_crouching && _player_movement_state == Enums.PlayerMovementState.CROUCHING:
-		_current_movement_speed = walk_speed
+		current_movement_speed = walk_speed
 
 
 func update_ground_state() -> void:
@@ -130,10 +130,10 @@ func update_movement_state() -> void:
 
 	
 
-	if _current_movement_speed == sprint_speed:
+	if current_movement_speed == sprint_speed:
 		_player_movement_state = Enums.PlayerMovementState.SPRINTING
 	
-	elif _current_movement_speed == crouch_speed:
+	elif current_movement_speed == crouch_speed:
 		_player_movement_state = Enums.PlayerMovementState.CROUCHING
 
 	elif movement_vector.x == 0 and movement_vector.z == 0:
