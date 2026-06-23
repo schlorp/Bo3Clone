@@ -18,14 +18,18 @@ var state_name: String:
     set(value):
         state_name = value
 
+var _state_machine: StateMachine
+
 
 # Constructor:
 # When overwriting _init, make sure to call super._init()
 # so this base logic is still executed
-func _init() -> void:
+func _init(_statemachine: StateMachine) -> void:
     # Always set a default name for the state
     # Remove null and set your own state name
     state_name = "" # "BaseState"
+
+    _state_machine = _statemachine
 
 
 # Called when the state is entered
