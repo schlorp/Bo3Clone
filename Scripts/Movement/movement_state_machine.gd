@@ -33,3 +33,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super._process(delta)
 	print("Current State: ", _current_state.state_name)
+
+
+func is_sprinting() -> bool:
+	return movement_node.current_movement_speed == movement_node.sprint_speed
+
+func is_crouching() -> bool:
+	return movement_node.current_movement_speed == movement_node.crouch_speed
+
+func is_jumping() -> bool:
+	return movement_node._player_ground_state == Enums.PlayerGroundState.IN_AIR
+
+func is_moving() -> bool:
+	return movement_node.movement_vector.x != 0 or movement_node.movement_vector.z != 0
+
+func is_not_moving() -> bool:
+	return movement_node.movement_vector.x == 0 and movement_node.movement_vector.z == 0
