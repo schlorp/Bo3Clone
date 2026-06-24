@@ -19,7 +19,7 @@ func setup_transitions() -> void:
 		Transition.new(
 			self,
 			state_machine.available_states["JumpingState"],
-			func():	return !state_machine.movement_node.is_grounded()
+			func():	return state_machine.movement_node.is_grounded() && Input.is_action_just_pressed("game_jump")
 		)
 	)
 	add_transition(

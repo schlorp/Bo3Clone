@@ -2,8 +2,12 @@ extends StateMachine
 class_name MovementStateMachine
 
 @export var movement_node: MovementNode
+@export var animation_player: AnimationPlayer
+@export var collision_shape: CollisionShape3D
+
 
 signal on_state_changed(state: State)
+
 
 func fill_available_states() -> void:
 	var idle_state = IdleState.new(self)
