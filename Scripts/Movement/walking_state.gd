@@ -2,10 +2,13 @@ extends State
 class_name WalkingState
 
 
+var animation_player: AnimationPlayer = null
+
 func _init(_statemachine: StateMachine) -> void:
 	super._init(_statemachine)
 	state_name = "WalkingState"
 
+	animation_player = state_machine.animation_player
 
 func setup_transitions() -> void:
 	add_transition(
@@ -40,3 +43,4 @@ func setup_transitions() -> void:
 
 func enter_state() -> void:
 	state_machine.movement_node.current_movement_speed = state_machine.movement_node.walk_speed
+	animation_player.play("Walking")

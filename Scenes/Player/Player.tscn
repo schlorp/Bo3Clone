@@ -25,12 +25,85 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0.51468015, 0)]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Neck:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Neck:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Neck:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_825xp"]
+resource_name = "Walking"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Neck:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.030296138, -0.16666667, 0, 0.16666667, 0, -0.030055493, -0.083333336, 0, 0.083333336, 0, 0.03166259, -0.083333336, 0, 0.083333336, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Neck:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 0.5217665, -0.16666667, 0, 0.16666667, 0, 0.5, -0.083333336, 2.483527e-09, 0.083333336, -2.483527e-09, 0.5240251, -0.083333336, 0, 0.083333336, 0, 0.5, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Neck:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.083333336, 0, 0, 0, 0, -0.083333336, 0, 0.083333336, 0, 0, -0.083333336, 0, 0.083333336, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_825xp"]
 _data = {
 &"Crouch": ExtResource("3_fk5o5"),
 &"Idle": ExtResource("4_825xp"),
-&"RESET": SubResource("Animation_fk5o5")
+&"RESET": SubResource("Animation_fk5o5"),
+&"Walking": SubResource("Animation_825xp")
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=728224122 node_paths=PackedStringArray("movement_node", "player_input_node")]
@@ -39,7 +112,7 @@ movement_node = NodePath("MovementNode")
 player_input_node = NodePath("PlayerInputParseNode")
 
 [node name="Neck" type="Node3D" parent="." unique_id=1464745721]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51468015, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_h54ih")
 
 [node name="Recoil" type="Node3D" parent="Neck" unique_id=1154748864]
