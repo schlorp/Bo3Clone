@@ -11,7 +11,7 @@ func setup_transitions() -> void:
 		Transition.new(
 			self,
 			state_machine.available_states["SlideState"],
-			func():	return state_machine.is_sprinting && state_machine.movement_node.is_grounded() && state_machine.movement_node.is_crouching()
+			func():	return state_machine.movement_node.sprint_input && state_machine.movement_node.is_grounded() && state_machine.movement_node.crouch_input
 		)
 	)
 	add_transition(
@@ -25,14 +25,14 @@ func setup_transitions() -> void:
 		Transition.new(
 			self,
 			state_machine.available_states["WalkingState"],
-			func():	return !state_machine.is_sprinting && state_machine.movement_node.is_moving() && state_machine.movement_node.is_grounded()
+			func():	return !state_machine.movement_node.sprint_input && state_machine.movement_node.is_moving() && state_machine.movement_node.is_grounded()
 		)
 	)
 	add_transition(
 		Transition.new(
 			self,
 			state_machine.available_states["IdleState"],
-			func():	return !state_machine.movement_node.is_moving() && !state_machine.is_sprinting
+			func():	return !state_machine.movement_node.is_moving() && !state_machine.movement_node.sprint_input
 		)
 	)
 

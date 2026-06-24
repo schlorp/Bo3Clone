@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bjgv2ocvs2xnr" path="res://Scripts/Player/player.gd" id="1_t26db"]
 [ext_resource type="PackedScene" uid="uid://cdcsm1ppijxfo" path="res://Scenes/Movement/MovementNode.tscn" id="2_ft8w5"]
 [ext_resource type="Script" uid="uid://c4fy8nk5tqp28" path="res://Scripts/Movement/movement_state_machine.gd" id="5_jmcll"]
+[ext_resource type="Script" uid="uid://y5h3tndw4mb2" path="res://Scripts/Movement/movementnodedebug.gd" id="6_4wape"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l3ax4"]
 
@@ -36,3 +37,10 @@ sprint_speed = 550.0
 [node name="MovementStateMachine" type="Node" parent="." unique_id=2015071485 node_paths=PackedStringArray("movement_node")]
 script = ExtResource("5_jmcll")
 movement_node = NodePath("../MovementNode")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MovementStateMachine" unique_id=390580267]
+offset_right = 300.0
+offset_bottom = 56.0
+text = "--movementstatedebugtext--"
+fit_content = true
+script = ExtResource("6_4wape")

@@ -16,6 +16,9 @@ var current_movement_speed: float = walk_speed
 
 var _jump_basis: Basis
 
+var crouch_input: bool = false
+var sprint_input: bool = false
+
 var player_ground_state: Enums.PlayerGroundState = Enums.PlayerGroundState.ON_GROUND
 var _player_movement_state: Enums.PlayerMovementState = Enums.PlayerMovementState.IDLE
 
@@ -23,7 +26,6 @@ var movement_vector: Vector3 = Vector3.ZERO
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 signal ground_state_changed(state: Enums.PlayerGroundState)
-signal movement_state_changed(state: Enums.PlayerMovementState)
 
 func _ready() -> void:
 	input_parser.connect("on_movement_input", Callable(self, "handle_movement_input"))
@@ -58,22 +60,11 @@ func apply_gravity(delta: float) -> void:
 	else:
 		movement_vector.y = 0
 
-func decellerate_slide(delta: float) -> void:
-	if player_ground_state == Enums.PlayerGroundState.IN_AIR:
-		return
-
-	var deceleration_rate: float = 5.0
-	if _player_movement_state == Enums.PlayerMovementState.SLIDING:
-		current_movement_speed = max(current_movement_speed - deceleration_rate * delta, walk_speed)
-		if current_movement_speed == walk_speed:
-			_player_movement_state = Enums.PlayerMovementState.WALKING
-
 
 func _physics_process(delta: float) -> void:
 	apply_movementvector(delta)
 	apply_gravity(delta)
 	update_ground_state()
-	update_movement_state()
 
 
 func jump() -> void:
@@ -83,10 +74,7 @@ func jump() -> void:
 
 
 func sprint(is_sprinting: bool) -> void:
-	if is_sprinting && player_ground_state == Enums.PlayerGroundState.ON_GROUND && _player_movement_state != Enums.PlayerMovementState.CROUCHING:
-		current_movement_speed = sprint_speed
-	elif !is_sprinting && _player_movement_state == Enums.PlayerMovementState.SPRINTING:
-		current_movement_speed = walk_speed
+	sprint_input = is_sprinting
 
 
 func slide() -> void:
@@ -104,21 +92,11 @@ func slide() -> void:
 func is_moving() -> bool:
 	return movement_vector.x != 0 or movement_vector.z != 0
 
-func is_crouching() -> bool:
-	return current_movement_speed == crouch_speed
-
 func is_grounded() -> bool:
 	return player_ground_state == Enums.PlayerGroundState.ON_GROUND
 
-
 func crouch(is_crouching: bool) -> void:
-	if is_crouching && player_ground_state == Enums.PlayerGroundState.ON_GROUND && _player_movement_state:
-		if _player_movement_state == Enums.PlayerMovementState.SPRINTING:
-			slide()
-		else:
-			current_movement_speed = crouch_speed
-	elif !is_crouching && _player_movement_state == Enums.PlayerMovementState.CROUCHING:
-		current_movement_speed = walk_speed
+	crouch_input = is_crouching
 
 
 func update_ground_state() -> void:
@@ -128,25 +106,3 @@ func update_ground_state() -> void:
 		player_ground_state = Enums.PlayerGroundState.IN_AIR
 
 	emit_signal("ground_state_changed", player_ground_state)
-
-
-func update_movement_state() -> void:
-	if player_ground_state == Enums.PlayerGroundState.IN_AIR:
-		_player_movement_state = Enums.PlayerMovementState.IDLE
-		return
-
-	
-
-	if current_movement_speed == sprint_speed:
-		_player_movement_state = Enums.PlayerMovementState.SPRINTING
-	
-	elif current_movement_speed == crouch_speed:
-		_player_movement_state = Enums.PlayerMovementState.CROUCHING
-
-	elif movement_vector.x == 0 and movement_vector.z == 0:
-		_player_movement_state = Enums.PlayerMovementState.IDLE
-
-	else:
-		_player_movement_state = Enums.PlayerMovementState.WALKING
-
-	emit_signal("movement_state_changed", _player_movement_state)

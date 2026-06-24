@@ -1,14 +1,6 @@
 [gd_scene format=3 uid="uid://cdcsm1ppijxfo"]
 
 [ext_resource type="Script" uid="uid://bxr7x8ud4umg1" path="res://Scripts/Movement/movement_node.gd" id="1_hajue"]
-[ext_resource type="Script" uid="uid://y5h3tndw4mb2" path="res://Scripts/Movement/movementnodedebug.gd" id="2_hdc0v"]
 
 [node name="MovementNode" type="Node" unique_id=2093196497]
 script = ExtResource("1_hajue")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=633701025]
-offset_right = 300.0
-offset_bottom = 56.0
-text = "--movementstatedebugtext--"
-fit_content = true
-script = ExtResource("2_hdc0v")

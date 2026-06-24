@@ -1,8 +1,9 @@
 extends StateMachine
-
+class_name MovementStateMachine
 
 @export var movement_node: MovementNode
-var is_sprinting: bool = false
+
+signal on_state_changed(state: State)
 
 func fill_available_states() -> void:
 	var idle_state = IdleState.new(self)
@@ -25,16 +26,15 @@ func fill_available_states() -> void:
 		state.setup_transitions()
 
 
+func switch_to_state(state_name: String) -> void:
+	super.switch_to_state(state_name)
+	emit_signal("on_state_changed", current_state)
+
+
 func _ready() -> void:
 	super._ready()
 	switch_to_state("IdleState")
-	movement_node.input_parser.connect("on_sprint_input", Callable(self, "check_if_sprinting"))
 
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	print("Current State: ", _current_state.state_name)
-
-
-func check_if_sprinting(_is_sprinting: bool) -> void:
-	is_sprinting = _is_sprinting
