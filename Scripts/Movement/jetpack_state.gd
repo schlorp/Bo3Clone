@@ -17,9 +17,14 @@ func setup_transitions() -> void:
 		)
 	)
 
+func enter_state() -> void:
+	state_machine.movement_node.is_jetpack_active = true
 
 func update_state(delta: float) -> void:
 	state_machine.movement_node.movement_vector.y = jetpack_force * delta
 
 	state_machine.movement_node.remove_jetpack_fuel(state_machine.movement_node.jetpack_fuel_consumption_rate * delta)
-	print("Jetpack Fuel: ", state_machine.movement_node.jetpack_fuel)
+
+func exit_state() -> void:
+	state_machine.movement_node.is_jetpack_active = false
+	state_machine.movement_node.jump_basis = state_machine.movement_node.parent_character.transform.basis

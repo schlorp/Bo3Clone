@@ -1,0 +1,41 @@
+Movement observaties:
+- geen mid air movement, niet met muis en niet met a,d - check
+- jump queue
+
+
+jetpack:
+- mid air met jetpack kan je wel strafen met w,a,s,d kan je richting kiezen en 
+je boost in de richting van de muis alleen als je dus met w,a,s,d klikt
+
+- als je in air ben kan je jetpack gebruiken om te boosten, maar die boost is niet lang.
+
+- jet pack reload alleen als je op de grond bent
+
+
+crouch transitions:
+- crouch -> sprint
+- idle/walking -> crouch
+- crouch -> idle/walking
+
+slide:
+- alleen wanneer er gerend word
+- jetpack boost word gebruikt bij slide, maar alleen als kan anders slide die minder ver gaat.
+- bijna de zelfde speed door de hele slide heen, dus je begint misschien kleine boost maar eigenlijk 
+ga je gewoon nog sneller over de grond dan als bijvoorbeeld sprint, met minder controlle
+- je kan klein beetje strafen met a,d maar niks met muis en w,slide
+- eindigt in crouch
+- mid slide cancel met springen	
+	transitions:
+	- sprint -> slide 
+	- slide -> jump
+	- slide -> crouch
+	
+denk aan global variables voor player en input_parser(sprint -> walk)
+resource voor movement
+jump enhancement
+walking state bit whacky when coming out of crouch
+slide anim
+movement uit zetten in slide
+en jetpack richting muis en movement in slide en jetpack langzamer
+slide neemt jetpack fuel in
+tilt into movement

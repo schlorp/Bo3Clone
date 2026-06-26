@@ -11,6 +11,7 @@ var crouch_speed: float = walk_speed * 0.5
 var jetpack_fuel: float = 100.0
 @export var jetpack_fuel_consumption_rate: float = 100.0
 @export var jetpack_fuel_recharge_rate: float = 150.0
+var is_jetpack_active: bool = false
 
 @export var initial_slide_boost: float = 0.0
 
@@ -37,7 +38,7 @@ func _ready() -> void:
 	input_parser.connect("on_crouch_input", Callable(self, "crouch"))
 
 func handle_movement_input(vector: Vector3) -> void:
-	if player_ground_state == Enums.PlayerGroundState.IN_AIR || is_sliding:
+	if player_ground_state == Enums.PlayerGroundState.IN_AIR && !is_jetpack_active || is_sliding:
 		return
 
 	var direction := Vector3.ZERO
@@ -49,7 +50,7 @@ func handle_movement_input(vector: Vector3) -> void:
 
 
 func apply_movementvector(delta: float) -> void:
-	if player_ground_state == Enums.PlayerGroundState.IN_AIR:
+	if player_ground_state == Enums.PlayerGroundState.IN_AIR and !is_jetpack_active:
 		parent_character.velocity = jump_basis * movement_vector * current_movement_speed * delta 
 	elif is_sliding:
 		parent_character.velocity = sliding_basis * movement_vector * current_movement_speed * delta
