@@ -14,6 +14,9 @@ var stand_height: float = 2.0
 var stand_radius: float = 0.5
 
 var can_un_crouch: bool = true
+var animation_finished: bool = false
+
+var uncrouch_animation_playing: bool = false
 
 func _init(_statemachine: StateMachine) -> void:
 	super._init(_statemachine)
@@ -38,21 +41,21 @@ func setup_transitions() -> void:
 		Transition.new(
 			self,
 			state_machine.available_states["SprintingState"],
-			func():	return state_machine.movement_node.sprint_input && state_machine.movement_node.is_moving() && can_un_crouch
+			func():	return state_machine.movement_node.sprint_input && state_machine.movement_node.is_moving() && can_leave_state()
 		)
 	)
 	add_transition(
 		Transition.new(
 			self,
 			state_machine.available_states["WalkingState"],
-			func():	return state_machine.movement_node.is_moving() && !state_machine.movement_node.crouch_input && can_un_crouch || Input.is_action_just_pressed("game_jump") && can_un_crouch
+			func():	return state_machine.movement_node.is_moving() && !state_machine.movement_node.crouch_input && can_leave_state() || Input.is_action_just_pressed("game_jump") && can_leave_state()
 		)
 	)
 	add_transition(
 		Transition.new(
 			self,
 			state_machine.available_states["IdleState"],
-			func():	return !state_machine.movement_node.is_moving() && !state_machine.movement_node.crouch_input && can_un_crouch
+			func():	return !state_machine.movement_node.is_moving() && !state_machine.movement_node.crouch_input && can_leave_state()
 		)
 	)
 
@@ -69,11 +72,30 @@ func enter_state() -> void:
 func update_state(delta: float) -> void:
 	can_un_crouch = !state_machine.movement_node.crouch_input && !shape_cast.is_colliding()
 
-func exit_state() -> void:
+	if can_un_crouch && !uncrouch_animation_playing:
+		play_uncrouch_animation()
+
+	if uncrouch_animation_playing && state_machine.movement_node.crouch_input:
+		uncrouch_animation_playing = false
+		enter_state()
+
+
+func play_uncrouch_animation() -> void:
+	uncrouch_animation_playing = true
 	animation_player.play("Crouch", -1.0 ,-1.0, true)
-	
+
+	animation_finished = false
+
 	await animation_player.animation_finished
 	
 	capsule_shape.height = stand_height
 	capsule_shape.radius = stand_radius
 	collision_shape.position.y = 0
+
+	animation_finished = true
+
+func exit_state() -> void:
+	uncrouch_animation_playing = false
+
+func can_leave_state() -> bool:
+	return can_un_crouch && animation_finished
