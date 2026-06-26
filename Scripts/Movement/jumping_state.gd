@@ -22,3 +22,4 @@ func setup_transitions() -> void:
 func enter_state() -> void:
 	state_machine.movement_node.jump_basis = state_machine.movement_node.parent_character.transform.basis
 	state_machine.movement_node.movement_vector.y = jump_force
+	state_machine.movement_node.is_jumping = true

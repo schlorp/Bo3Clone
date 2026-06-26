@@ -53,3 +53,4 @@ func update_state(delta: float) -> void:
 func exit_state() -> void:
 	if state_machine.movement_node.is_grounded():
 		can_jetpack = false
+		state_machine.movement_node.is_jumping = false

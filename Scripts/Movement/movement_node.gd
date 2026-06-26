@@ -24,6 +24,7 @@ var crouch_input: bool = false
 var sprint_input: bool = false
 
 var is_sliding: bool = false
+var is_jumping: bool = false
 
 var player_ground_state: Enums.PlayerGroundState = Enums.PlayerGroundState.ON_GROUND
 
@@ -38,7 +39,7 @@ func _ready() -> void:
 	input_parser.connect("on_crouch_input", Callable(self, "crouch"))
 
 func handle_movement_input(vector: Vector3) -> void:
-	if player_ground_state == Enums.PlayerGroundState.IN_AIR && !is_jetpack_active || is_sliding:
+	if is_jumping && !is_jetpack_active || is_sliding:
 		return
 
 	var direction := Vector3.ZERO
@@ -50,7 +51,7 @@ func handle_movement_input(vector: Vector3) -> void:
 
 
 func apply_movementvector(delta: float) -> void:
-	if player_ground_state == Enums.PlayerGroundState.IN_AIR and !is_jetpack_active:
+	if player_ground_state == Enums.PlayerGroundState.IN_AIR && !is_jetpack_active:
 		parent_character.velocity = jump_basis * movement_vector * current_movement_speed * delta 
 	elif is_sliding:
 		parent_character.velocity = sliding_basis * movement_vector * current_movement_speed * delta
