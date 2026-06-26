@@ -35,7 +35,9 @@ resource voor movement
 jump enhancement
 walking state bit whacky when coming out of crouch
 slide anim
-movement uit zetten in slide
-en jetpack richting muis en movement in slide en jetpack langzamer
+en jetpack richting muis - done
+en movement in slide en jetpack langzamer
 slide neemt jetpack fuel in
 tilt into movement
+springen en jetpack ook wat meer movement naar voren
+niet auto kunnen sliden als je ctrl in gedrukt houd
