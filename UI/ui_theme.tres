@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://dkxu575j4r6jm"]
+
+[ext_resource type="Texture2D" uid="uid://oljblhvunbtx" path="res://Textures/transparent_grabber.png" id="1_it55r"]
+
+[resource]
+HSlider/icons/grabber = ExtResource("1_it55r")
+HSlider/icons/grabber_disabled = ExtResource("1_it55r")
+HSlider/icons/grabber_highlight = ExtResource("1_it55r")

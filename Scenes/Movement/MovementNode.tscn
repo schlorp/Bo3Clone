@@ -1,6 +1,25 @@
 [gd_scene format=3 uid="uid://cdcsm1ppijxfo"]
 
 [ext_resource type="Script" uid="uid://bxr7x8ud4umg1" path="res://Scripts/Movement/movement_node.gd" id="1_hajue"]
+[ext_resource type="Theme" uid="uid://dkxu575j4r6jm" path="res://UI/ui_theme.tres" id="2_hdc0v"]
+[ext_resource type="Script" uid="uid://b2n4oymv738ib" path="res://Scripts/Movement/ui_fuelslider.gd" id="3_v3ydm"]
 
 [node name="MovementNode" type="Node" unique_id=2093196497]
 script = ExtResource("1_hajue")
+
+[node name="HSlider" type="HSlider" parent="." unique_id=1529988319]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -98.0
+offset_right = 74.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_hdc0v")
+editable = false
+scrollable = false
+script = ExtResource("3_v3ydm")
