@@ -51,7 +51,7 @@ func handle_movement_input(vector: Vector3) -> void:
 
 
 func apply_movementvector(delta: float) -> void:
-	if player_ground_state == Enums.PlayerGroundState.IN_AIR && !is_jetpack_active:
+	if is_jumping && !is_jetpack_active:
 		parent_character.velocity = jump_basis * movement_vector * current_movement_speed * delta 
 	elif is_sliding:
 		parent_character.velocity = sliding_basis * movement_vector * current_movement_speed * delta
