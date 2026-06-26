@@ -21,6 +21,7 @@ func fill_available_states() -> void:
 	var crouch_state = CrouchState.new(self)
 	var slide_state = SlideState.new(self)
 	var jetpack_state = JetpackState.new(self)
+	var falling_state = FallingState.new(self)
 
 	_available_states = {
 		idle_state.state_name: idle_state,
@@ -29,7 +30,8 @@ func fill_available_states() -> void:
 		jumping_state.state_name: jumping_state,
 		crouch_state.state_name: crouch_state,
 		slide_state.state_name: slide_state,
-		jetpack_state.state_name: jetpack_state
+		jetpack_state.state_name: jetpack_state,
+		falling_state.state_name: falling_state
 	}
 
 	for state in _available_states.values():
