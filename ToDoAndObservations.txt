@@ -34,10 +34,11 @@ denk aan global variables voor player en input_parser(sprint -> walk)
 resource voor movement
 jump enhancement
 walking state bit whacky when coming out of crouch
-slide anim
+slide anim (lager dan crouch)
 en jetpack richting muis - done
 en movement in slide en jetpack langzamer
 slide neemt jetpack fuel in
 tilt into movement
 springen en jetpack ook wat meer movement naar voren
 niet auto kunnen sliden als je ctrl in gedrukt houd
+uncrouch onmogelijk onder obstakels

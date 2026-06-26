@@ -11,6 +11,8 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fk5o5"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_fk5o5"]
+
 [sub_resource type="Animation" id="Animation_fk5o5"]
 length = 0.001
 tracks/0/type = "value"
@@ -125,6 +127,10 @@ near = 0.001
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1273782557]
 shape = SubResource("CapsuleShape3D_fk5o5")
 
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=2017032709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5029871, 0)
+shape = SubResource("SphereShape3D_fk5o5")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1248046296]
 libraries/ = SubResource("AnimationLibrary_825xp")
 
@@ -134,11 +140,12 @@ sprint_speed = 550.0
 
 [node name="PlayerInputParseNode" parent="." unique_id=929400039 instance=ExtResource("1_ft8w5")]
 
-[node name="MovementStateMachine" type="Node" parent="." unique_id=2015071485 node_paths=PackedStringArray("movement_node", "animation_player", "collision_shape")]
+[node name="MovementStateMachine" type="Node" parent="." unique_id=2015071485 node_paths=PackedStringArray("movement_node", "animation_player", "collision_shape", "crouch_shape_cast")]
 script = ExtResource("5_jmcll")
 movement_node = NodePath("../MovementNode")
 animation_player = NodePath("../AnimationPlayer")
 collision_shape = NodePath("../CollisionShape3D")
+crouch_shape_cast = NodePath("../ShapeCast3D")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MovementStateMachine" unique_id=390580267]
 offset_right = 300.0
