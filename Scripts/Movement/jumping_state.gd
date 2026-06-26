@@ -2,6 +2,7 @@ extends State
 class_name JumpingState
 
 @export var jump_force: float = 2.5
+var can_jetpack: bool = false
 
 
 func _init(_statemachine: StateMachine) -> void:
@@ -10,6 +11,13 @@ func _init(_statemachine: StateMachine) -> void:
 
 
 func setup_transitions() -> void:
+	add_transition(
+		Transition.new(
+			self,
+			state_machine.available_states["JetpackState"],
+			func():	return !state_machine.movement_node.is_grounded() && Input.is_action_pressed("game_jump") && can_jetpack
+		)
+	)
 	add_transition(
 		Transition.new(
 			self,
@@ -42,3 +50,12 @@ func setup_transitions() -> void:
 func enter_state() -> void:
 	state_machine.movement_node.jump_basis = state_machine.movement_node.parent_character.transform.basis
 	state_machine.movement_node.movement_vector.y = jump_force
+
+
+func update_state(delta: float) -> void:
+	if Input.is_action_just_released("game_jump"):
+		can_jetpack = true
+
+
+func exit_state() -> void:
+	can_jetpack = false
