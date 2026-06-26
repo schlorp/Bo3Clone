@@ -5,6 +5,10 @@ class_name MovementStateMachine
 @export var animation_player: AnimationPlayer
 @export var collision_shape: CollisionShape3D
 
+var can_slide: bool = true
+var slide_cooldown: float = 1.0
+var current_slide_cooldown: float = 0.0
+
 
 signal on_state_changed(state: State)
 
@@ -40,5 +44,18 @@ func _ready() -> void:
 	switch_to_state("IdleState")
 
 
+func start_slide_cooldown() -> void:
+	can_slide = false
+	current_slide_cooldown = slide_cooldown
+
+func slide_timer(delta: float) -> void:
+	if !can_slide:
+		current_slide_cooldown -= delta
+		if current_slide_cooldown <= 0.0:
+			can_slide = true
+			current_slide_cooldown = 0.0
+
+
 func _process(delta: float) -> void:
 	super._process(delta)
+	slide_timer(delta)

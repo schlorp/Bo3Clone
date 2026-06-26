@@ -62,12 +62,12 @@ func _process(delta: float) -> void:
 	if _current_state == null:
 		return
 
-	update_current_state()
+	update_current_state(delta)
 	check_for_conditions_to_switch_state()
 
 
-func update_current_state() -> void:
-	_current_state.update_state()
+func update_current_state(delta: float) -> void:
+	_current_state.update_state(delta)
 
 
 func switch_to_state(state_name: String) -> void:

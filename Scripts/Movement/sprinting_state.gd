@@ -15,7 +15,7 @@ func setup_transitions() -> void:
 		Transition.new(
 			self,
 			state_machine.available_states["SlideState"],
-			func():	return state_machine.movement_node.sprint_input && state_machine.movement_node.is_grounded() && state_machine.movement_node.crouch_input
+			func():	return state_machine.movement_node.sprint_input && state_machine.movement_node.is_grounded() && state_machine.movement_node.crouch_input && state_machine.can_slide
 		)
 	)
 	add_transition(

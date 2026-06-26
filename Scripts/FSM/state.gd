@@ -38,7 +38,7 @@ func enter_state() -> void:
 
 
 # Called every frame (or tick) while this state is active
-func update_state() -> void:
+func update_state(delta: float) -> void:
     pass
 
 
