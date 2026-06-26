@@ -15,6 +15,13 @@ func setup_transitions() -> void:
 	add_transition(
 		Transition.new(
 			self,
+			state_machine.available_states["FallingState"],
+			func():	return !state_machine.movement_node.is_grounded()
+		)
+	)
+	add_transition(
+		Transition.new(
+			self,
 			state_machine.available_states["WalkingState"],
 			func(): return state_machine.movement_node.is_moving() && !state_machine.movement_node.sprint_input && state_machine.movement_node.is_grounded()
 		)

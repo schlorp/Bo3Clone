@@ -30,7 +30,7 @@ func setup_transitions() -> void:
 	add_transition(
 		Transition.new(
 			self,
-			state_machine.available_states["JumpingState"],
+			state_machine.available_states["FallingState"],
 			func():	return !state_machine.movement_node.is_grounded()
 		)
 	)
