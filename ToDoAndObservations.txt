@@ -43,6 +43,7 @@ springen en jetpack ook wat meer movement naar voren
 niet auto kunnen sliden als je ctrl in gedrukt houd
 uncrouch onmogelijk onder obstakels - done
 add tutorial text and obstacles for all movement tech
+falling from obstacles when not jumping feels weird - done
 
 maybe:
 wallrun
