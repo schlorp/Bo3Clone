@@ -8,6 +8,10 @@ class_name MovementNode
 @export var sprint_speed: float = 450.0
 var crouch_speed: float = walk_speed * 0.5
 
+var jetpack_fuel: float = 100.0
+@export var jetpack_fuel_consumption_rate: float = 100.0
+@export var jetpack_fuel_recharge_rate: float = 150.0
+
 @export var initial_slide_boost: float = 0.0
 
 var current_movement_speed: float = walk_speed
@@ -67,6 +71,8 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	update_ground_state()
 
+	if is_grounded():
+		add_jetpack_fuel(jetpack_fuel_consumption_rate * delta)
 
 func sprint(is_sprinting: bool) -> void:
 	sprint_input = is_sprinting
@@ -89,3 +95,14 @@ func update_ground_state() -> void:
 		player_ground_state = Enums.PlayerGroundState.IN_AIR
 
 	emit_signal("ground_state_changed", player_ground_state)
+
+
+func remove_jetpack_fuel(amount: float) -> void:
+	jetpack_fuel -= amount
+	if jetpack_fuel < 0.0:
+		jetpack_fuel = 0.0
+
+func add_jetpack_fuel(amount: float) -> void:
+	jetpack_fuel += amount
+	if jetpack_fuel > 100.0:
+		jetpack_fuel = 100.0

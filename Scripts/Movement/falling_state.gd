@@ -13,7 +13,7 @@ func setup_transitions() -> void:
 		Transition.new(
 			self,
 			state_machine.available_states["JetpackState"],
-			func():	return !state_machine.movement_node.is_grounded() && Input.is_action_pressed("game_jump") && can_jetpack
+			func():	return !state_machine.movement_node.is_grounded() && Input.is_action_pressed("game_jump") && can_jetpack && state_machine.movement_node.jetpack_fuel > 0
 		)
 	)
 	add_transition(
