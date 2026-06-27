@@ -26,7 +26,7 @@ func setup_transitions() -> void:
 	add_transition(
 		Transition.new(
 			self,
-			state_machine.available_states["CrouchState"],
+			state_machine.available_states["SlideState"],
 			func():	return state_machine.movement_node.is_grounded() && state_machine.movement_node.crouch_input
 		)
 	)

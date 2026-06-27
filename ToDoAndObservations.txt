@@ -39,7 +39,6 @@ jump enhancement:
 
 en w,a,s,d movement in slide en jetpack langzamer
 slide neemt jetpack fuel in
-mid slide kunnen springen om te cancellen
 niet auto kunnen sliden als je ctrl in gedrukt houd
 
 tilt into movement
@@ -48,7 +47,9 @@ add tutorial text and obstacles for all movement tech
 uncrouch onmogelijk onder obstakels - done
 falling from obstacles when not jumping feels weird - done
 en jetpack richting muis - done
+
 slide anim (lager dan crouch) - done
+mid slide kunnen springen om te cancellen - done
 
 maybe:
 wallrun
