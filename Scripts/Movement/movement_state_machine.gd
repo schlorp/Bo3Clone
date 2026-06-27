@@ -7,7 +7,7 @@ class_name MovementStateMachine
 @export var head_hitter_shape_cast: ShapeCast3D
 
 var can_slide: bool = true
-var slide_cooldown: float = 1.0
+var slide_cooldown: float
 var current_slide_cooldown: float = 0.0
 
 
@@ -46,12 +46,16 @@ func switch_to_state(state_name: String) -> void:
 
 func _ready() -> void:
 	super._ready()
+
+	slide_cooldown = movement_node.movement_resource.slide_cooldown
+
 	switch_to_state("IdleState")
 
 
 func start_slide_cooldown() -> void:
 	can_slide = false
 	current_slide_cooldown = slide_cooldown
+
 
 func slide_timer(delta: float) -> void:
 	if !can_slide:

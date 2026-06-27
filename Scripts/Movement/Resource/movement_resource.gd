@@ -30,3 +30,5 @@ class_name MovementResource
 @export var slide_min_speed: float = 800.0
 @export var slide_height: float = 0.75
 @export var slide_radius: float = 0.25
+@export var slide_jetpack_fuel_cost: float = 50.0
+@export var slide_cooldown: float = 1.0

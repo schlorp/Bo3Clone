@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_31u1u")
 jump_force = 2.5
+slide_cooldown = 0.75
 metadata/_custom_type_script = "uid://c7rksqsweheev"

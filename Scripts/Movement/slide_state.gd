@@ -20,6 +20,9 @@ var _slide_radius: float
 var _stand_height: float
 var _stand_radius: float
 
+var _slide_jetpack_fuel_cost: float
+
+
 func _init(_statemachine: StateMachine) -> void:
 	super._init(_statemachine)
 	state_name = "SlideState"
@@ -38,6 +41,9 @@ func _init(_statemachine: StateMachine) -> void:
 	_slide_radius = state_machine.movement_node.movement_resource.slide_radius
 	_stand_height = state_machine.movement_node.movement_resource.stand_height
 	_stand_radius = state_machine.movement_node.movement_resource.stand_radius
+
+	_slide_jetpack_fuel_cost = state_machine.movement_node.movement_resource.slide_jetpack_fuel_cost
+
 
 func setup_transitions() -> void:
 	add_transition(
@@ -70,8 +76,6 @@ func setup_transitions() -> void:
 	)
 
 
-# on enter state, set speed to start speed, let it slide a bit then decelerate in update to minimal speed, when it reaches minimal speed, transition to crouch state
-
 func enter_state() -> void:
 	_slide_completed = false
 	_animation_started = false
@@ -87,6 +91,9 @@ func enter_state() -> void:
 	_capsule_shape.radius = _slide_radius
 	_collision_shape.position.y = (_slide_height - _stand_height) / 2.0
 
+	state_machine.movement_node.remove_jetpack_fuel(_slide_jetpack_fuel_cost)
+
+
 func update_state(delta: float) -> void:
 	if state_machine.movement_node.current_movement_speed > slide_min_speed:
 		state_machine.movement_node.current_movement_speed -= slide_deceleration * delta
@@ -95,6 +102,7 @@ func update_state(delta: float) -> void:
 
 	if _slide_completed && !_animation_started:
 		unslide()
+
 
 func unslide() -> void:
 	_animation_started = true
@@ -109,6 +117,7 @@ func unslide() -> void:
 	_collision_shape.position.y = 0
 
 	_animation_finished = true
+
 
 func exit_state() -> void:
 	state_machine.start_slide_cooldown()

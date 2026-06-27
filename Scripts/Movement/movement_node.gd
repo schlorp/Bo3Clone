@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	update_ground_state()
 
-	if is_grounded():
+	if is_grounded() && !is_sliding:
 		add_jetpack_fuel(movement_resource.jetpack_fuel_recharge_rate * delta)
 
 func sprint(is_sprinting: bool) -> void:
