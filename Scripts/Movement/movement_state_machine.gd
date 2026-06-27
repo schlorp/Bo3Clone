@@ -4,7 +4,7 @@ class_name MovementStateMachine
 @export var movement_node: MovementNode
 @export var animation_player: AnimationPlayer
 @export var collision_shape: CollisionShape3D
-@export var crouch_shape_cast: ShapeCast3D
+@export var head_hitter_shape_cast: ShapeCast3D
 
 var can_slide: bool = true
 var slide_cooldown: float = 1.0

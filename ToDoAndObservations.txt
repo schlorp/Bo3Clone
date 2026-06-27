@@ -32,18 +32,26 @@ ga je gewoon nog sneller over de grond dan als bijvoorbeeld sprint, met minder c
 	
 denk aan global variables voor player en input_parser(sprint -> walk)
 resource voor movement
-jump enhancement
-walking state bit whacky when coming out of crouch
-slide anim (lager dan crouch)
-en jetpack richting muis - done
-en movement in slide en jetpack langzamer
+jump enhancement:
+	- springen en jetpack ook wat meer movement naar voren
+	- apex
+	- coyote time 
+
+en w,a,s,d movement in slide en jetpack langzamer
 slide neemt jetpack fuel in
-tilt into movement
-springen en jetpack ook wat meer movement naar voren
+mid slide kunnen springen om te cancellen
 niet auto kunnen sliden als je ctrl in gedrukt houd
-uncrouch onmogelijk onder obstakels - done
+
+tilt into movement
 add tutorial text and obstacles for all movement tech
+
+uncrouch onmogelijk onder obstakels - done
 falling from obstacles when not jumping feels weird - done
+en jetpack richting muis - done
+slide anim (lager dan crouch) - done
 
 maybe:
 wallrun
+
+huidige notes:
+-

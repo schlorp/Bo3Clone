@@ -26,7 +26,7 @@ func _init(_statemachine: StateMachine) -> void:
 	collision_shape = state_machine.collision_shape
 	capsule_shape = collision_shape.shape as CapsuleShape3D
 
-	shape_cast = state_machine.crouch_shape_cast
+	shape_cast = state_machine.head_hitter_shape_cast
 
 
 func setup_transitions() -> void:
@@ -61,7 +61,7 @@ func setup_transitions() -> void:
 
 func enter_state() -> void:
 	state_machine.movement_node.current_movement_speed = state_machine.movement_node.crouch_speed
-	animation_player.play("Crouch", -1.0 ,1.0)
+	animation_player.play("Crouch", 1.0 ,1.0)
 
 	await animation_player.animation_finished
 

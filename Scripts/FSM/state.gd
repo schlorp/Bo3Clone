@@ -53,3 +53,7 @@ func setup_transitions() -> void:
 # Add a transition to this state
 func add_transition(transition: Transition) -> void:
     _transitions.append(transition)
+
+func can_leave_state() -> bool:
+    # Override this function to add custom logic for leaving the state
+    return true
