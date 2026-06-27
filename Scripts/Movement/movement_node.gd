@@ -4,18 +4,12 @@ class_name MovementNode
 @onready var parent_character: CharacterBody3D = get_parent() as CharacterBody3D
 @export var input_parser: PlayerInputParseNode
 
-@export var walk_speed: float = 350.0
-@export var sprint_speed: float = 450.0
-var crouch_speed: float = walk_speed * 0.5
+@export var movement_resource: MovementResource
 
 var jetpack_fuel: float = 100.0
-@export var jetpack_fuel_consumption_rate: float = 100.0
-@export var jetpack_fuel_recharge_rate: float = 150.0
 var is_jetpack_active: bool = false
 
-@export var initial_slide_boost: float = 0.0
-
-var current_movement_speed: float = walk_speed
+@onready var current_movement_speed: float = movement_resource.walk_speed
 
 var jump_basis: Basis
 var sliding_basis: Basis
@@ -74,7 +68,7 @@ func _physics_process(delta: float) -> void:
 	update_ground_state()
 
 	if is_grounded():
-		add_jetpack_fuel(jetpack_fuel_consumption_rate * delta)
+		add_jetpack_fuel(movement_resource.jetpack_fuel_recharge_rate * delta)
 
 func sprint(is_sprinting: bool) -> void:
 	sprint_input = is_sprinting

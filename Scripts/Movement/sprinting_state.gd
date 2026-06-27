@@ -2,13 +2,19 @@ extends State
 class_name SprintingState
 
 var animation_player: AnimationPlayer = null
-var animation_speed: float = 2.0
+
+var animation_speed: float
+var sprint_speed: float
 
 
 func _init(_statemachine: StateMachine) -> void:
 	super._init(_statemachine)
 	state_name = "SprintingState"
+
 	animation_player = state_machine.animation_player
+	
+	animation_speed = state_machine.movement_node.movement_resource.sprint_animation_speed
+	sprint_speed = state_machine.movement_node.movement_resource.sprint_speed
 
 func setup_transitions() -> void:
 	add_transition(
@@ -48,6 +54,6 @@ func setup_transitions() -> void:
 	)
 
 func enter_state() -> void:
-	state_machine.movement_node.current_movement_speed = state_machine.movement_node.sprint_speed
+	state_machine.movement_node.current_movement_speed = sprint_speed
 	animation_player.play("Walking")
 	animation_player.speed_scale = animation_speed

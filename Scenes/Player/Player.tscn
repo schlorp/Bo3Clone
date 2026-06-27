@@ -8,6 +8,7 @@
 [ext_resource type="Animation" uid="uid://dyeqaxbs754eh" path="res://Animations/Idle.res" id="4_825xp"]
 [ext_resource type="Script" uid="uid://c4fy8nk5tqp28" path="res://Scripts/Movement/movement_state_machine.gd" id="5_jmcll"]
 [ext_resource type="Script" uid="uid://y5h3tndw4mb2" path="res://Scripts/Movement/movementnodedebug.gd" id="6_4wape"]
+[ext_resource type="Resource" uid="uid://qr73kextu6l0" path="res://Resources/Movement/player_movement_resource.tres" id="6_825xp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fk5o5"]
 
@@ -152,7 +153,7 @@ libraries/ = SubResource("AnimationLibrary_825xp")
 
 [node name="MovementNode" parent="." unique_id=848334543 node_paths=PackedStringArray("input_parser") instance=ExtResource("2_ft8w5")]
 input_parser = NodePath("../PlayerInputParseNode")
-sprint_speed = 550.0
+movement_resource = ExtResource("6_825xp")
 
 [node name="PlayerInputParseNode" parent="." unique_id=929400039 instance=ExtResource("1_ft8w5")]
 

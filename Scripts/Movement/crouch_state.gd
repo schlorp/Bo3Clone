@@ -7,11 +7,13 @@ var capsule_shape: CapsuleShape3D = null
 
 var shape_cast: ShapeCast3D = null
 
-var crouch_height: float = 1.0
-var crouch_radius: float = 0.25
+var crouch_speed: float
 
-var stand_height: float = 2.0
-var stand_radius: float = 0.5
+var crouch_height: float
+var crouch_radius: float
+
+var stand_height: float
+var stand_radius: float
 
 var can_un_crouch: bool = true
 var animation_finished: bool = false
@@ -27,6 +29,14 @@ func _init(_statemachine: StateMachine) -> void:
 	capsule_shape = collision_shape.shape as CapsuleShape3D
 
 	shape_cast = state_machine.head_hitter_shape_cast
+
+	crouch_speed = state_machine.movement_node.movement_resource.crouch_speed
+
+	crouch_height = state_machine.movement_node.movement_resource.crouch_height
+	crouch_radius = state_machine.movement_node.movement_resource.crouch_radius
+
+	stand_height = state_machine.movement_node.movement_resource.stand_height
+	stand_radius = state_machine.movement_node.movement_resource.stand_radius
 
 
 func setup_transitions() -> void:
@@ -60,7 +70,7 @@ func setup_transitions() -> void:
 	)
 
 func enter_state() -> void:
-	state_machine.movement_node.current_movement_speed = state_machine.movement_node.crouch_speed
+	state_machine.movement_node.current_movement_speed = state_machine.movement_node.movement_resource.crouch_speed
 	animation_player.play("Crouch", 1.0 ,1.0)
 
 	await animation_player.animation_finished

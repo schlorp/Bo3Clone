@@ -1,12 +1,14 @@
 extends State
 class_name JumpingState
 
-@export var jump_force: float = 2.5
+var jump_force: float
 
 
 func _init(_statemachine: StateMachine) -> void:
 	super._init(_statemachine)
 	state_name = "JumpingState"
+
+	jump_force = state_machine.movement_node.movement_resource.jump_force
 
 
 func setup_transitions() -> void:

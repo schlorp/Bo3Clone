@@ -30,8 +30,8 @@ ga je gewoon nog sneller over de grond dan als bijvoorbeeld sprint, met minder c
 	- slide -> jump
 	- slide -> crouch
 	
+
 denk aan global variables voor player en input_parser(sprint -> walk)
-resource voor movement
 jump enhancement:
 	- springen en jetpack ook wat meer movement naar voren
 	- apex
@@ -47,6 +47,7 @@ add tutorial text and obstacles for all movement tech
 uncrouch onmogelijk onder obstakels - done
 falling from obstacles when not jumping feels weird - done
 en jetpack richting muis - done
+resource voor movement - done
 
 slide anim (lager dan crouch) - done
 mid slide kunnen springen om te cancellen - done

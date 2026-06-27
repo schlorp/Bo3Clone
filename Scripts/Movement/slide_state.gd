@@ -1,9 +1,9 @@
 extends State
 class_name SlideState
 
-@export var slide_start_speed: float = 950.0
-@export var slide_deceleration: float = 150.0
-@export var slide_min_speed: float = 800.0
+var slide_start_speed: float
+var slide_deceleration: float
+var slide_min_speed: float
 
 var _slide_completed: bool = false
 var _animation_started: bool = false
@@ -14,11 +14,11 @@ var _animation_player: AnimationPlayer = null
 var _collision_shape: CollisionShape3D = null
 var _capsule_shape: CapsuleShape3D = null
 
-var _slide_height: float = 0.75
-var _slide_radius: float = 0.25
+var _slide_height: float
+var _slide_radius: float
 
-var _stand_height: float = 2.0
-var _stand_radius: float = 0.5
+var _stand_height: float
+var _stand_radius: float
 
 func _init(_statemachine: StateMachine) -> void:
 	super._init(_statemachine)
@@ -29,6 +29,15 @@ func _init(_statemachine: StateMachine) -> void:
 
 	_collision_shape = state_machine.collision_shape
 	_capsule_shape = _collision_shape.shape as CapsuleShape3D
+
+	slide_start_speed = state_machine.movement_node.movement_resource.slide_start_speed
+	slide_deceleration = state_machine.movement_node.movement_resource.slide_deceleration
+	slide_min_speed = state_machine.movement_node.movement_resource.slide_min_speed
+	
+	_slide_height = state_machine.movement_node.movement_resource.slide_height
+	_slide_radius = state_machine.movement_node.movement_resource.slide_radius
+	_stand_height = state_machine.movement_node.movement_resource.stand_height
+	_stand_radius = state_machine.movement_node.movement_resource.stand_radius
 
 func setup_transitions() -> void:
 	add_transition(

@@ -4,13 +4,18 @@ class_name WalkingState
 
 var animation_player: AnimationPlayer = null
 
-var animation_speed: float = 1.0
+var animation_speed: float
+var walk_speed: float
 
 func _init(_statemachine: StateMachine) -> void:
 	super._init(_statemachine)
 	state_name = "WalkingState"
 
 	animation_player = state_machine.animation_player
+
+	animation_speed = state_machine.movement_node.movement_resource.walk_animation_speed
+	walk_speed = state_machine.movement_node.movement_resource.walk_speed
+
 
 func setup_transitions() -> void:
 	add_transition(
@@ -51,6 +56,6 @@ func setup_transitions() -> void:
 
 
 func enter_state() -> void:
-	state_machine.movement_node.current_movement_speed = state_machine.movement_node.walk_speed
+	state_machine.movement_node.current_movement_speed = walk_speed
 	animation_player.play("Walking")
 	animation_player.speed_scale = animation_speed
