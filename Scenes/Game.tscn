@@ -81,7 +81,7 @@ this takes jetpack fuel"
 transform = Transform3D(-0.86602527, 0, -0.49999994, 0, 1, 0, 0.49999994, 0, -0.86602527, 29.898886, 2.0240648, -76.99938)
 text = "Press \"SPACE\" To jump to go over obstacles"
 
-[node name="JumpLabel2" type="Label3D" parent="ObstaclesText" unique_id=1712423263]
+[node name="JetpackLabel" type="Label3D" parent="ObstaclesText" unique_id=1712423263]
 transform = Transform3D(-0.86602527, 0, -0.49999994, 0, 1, 0, 0.49999994, 0, -0.86602527, 29.898886, 2.0240648, -58.999382)
 text = "When jumping hold \"SPACE\" to activate jetpack, 
 use this to get to higher places"

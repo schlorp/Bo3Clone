@@ -40,7 +40,8 @@ en w,a,s,d movement in slide en jetpack langzamer - not needed right now
 
 tilt into movement - not needed right now
 
-denk aan global variables voor player en input_parser(sprint -> walk) - doing
+denk aan global variables voor player en input_parser(sprint -> walk) - not needed right now
+
 niet auto kunnen sliden als je ctrl in gedrukt houd
 multiplayer time
 
@@ -58,6 +59,9 @@ slide neemt jetpack fuel in - done
 maybe:
 wallrun
 damage values above every one u hit
+create a gym
+
+start gun system - doing
 
 huidige notes:
 -
