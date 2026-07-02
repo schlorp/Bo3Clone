@@ -19,6 +19,6 @@ func setup_transitions() -> void:
 		Transition.new(
 			self,
 			state_machine.available_states["EmptyState"],
-			func():	return fire_done# && state_machine.gun.current_ammo <= 0
+			func():	return fire_done && state_machine.gun.current_ammo <= 0
 		)
 	)
