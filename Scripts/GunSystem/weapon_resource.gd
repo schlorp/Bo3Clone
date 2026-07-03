@@ -21,3 +21,8 @@ class_name WeaponResource
 @export_subgroup("Reload stats")
 @export var reload_time: float = 2.0
 @export var reload_time_empty: float = 3.0
+
+@export_subgroup("Animations")
+@export var idle_animation: Animation
+@export var firing_animation: Animation
+@export var reload_animation: Animation

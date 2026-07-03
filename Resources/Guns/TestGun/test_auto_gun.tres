@@ -1,6 +1,9 @@
 [gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://crpehuwmx8xod"]
 
+[ext_resource type="Animation" uid="uid://dv43dajj20k0a" path="res://Animations/gun/GUN_fire.res" id="1_lpd5r"]
 [ext_resource type="Script" uid="uid://bqod0w3sek4tw" path="res://Scripts/GunSystem/weapon_resource.gd" id="1_tgajo"]
+[ext_resource type="Animation" uid="uid://b2nsg8a63derm" path="res://Animations/gun/GUN_idle.res" id="2_6mn20"]
+[ext_resource type="Animation" uid="uid://opyrt2dapbi4" path="res://Animations/gun/GUN_reload.res" id="3_4yenj"]
 
 [resource]
 script = ExtResource("1_tgajo")
@@ -8,4 +11,7 @@ fire_rate = 0.05
 available_fire_modes = Array[int]([0, 1, 2])
 default_fire_mode = 0
 burst_delay = 0.02
+idle_animation = ExtResource("2_6mn20")
+firing_animation = ExtResource("1_lpd5r")
+reload_animation = ExtResource("3_4yenj")
 metadata/_custom_type_script = "uid://bqod0w3sek4tw"

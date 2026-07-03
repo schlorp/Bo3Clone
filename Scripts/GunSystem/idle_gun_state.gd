@@ -46,3 +46,6 @@ func handle_transition_with_fire_mode() -> bool:
 			return true
 
 	return false
+
+func enter_state() -> void:
+	pass

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cmg463xo7kp64" path="res://Scripts/GunSystem/BaseGun/base_gun.gd" id="1_r0y1f"]
 [ext_resource type="Resource" uid="uid://crpehuwmx8xod" path="res://Resources/Guns/TestGun/test_auto_gun.tres" id="2_0eelq"]
 [ext_resource type="Script" uid="uid://cs1e8uoa1goue" path="res://Scripts/GunSystem/gun_state_machine.gd" id="2_sgm26"]
+[ext_resource type="PackedScene" uid="uid://bgycgawpmgki2" path="res://Scenes/arms/fps_arms.tscn" id="4_p4vtp"]
+[ext_resource type="PackedScene" uid="uid://dfehj8iogcanv" path="res://Scenes/GunScenes/pistol_scene.tscn" id="5_5hdhi"]
 
 [node name="BaseGun" type="Node3D" unique_id=47121967]
 script = ExtResource("1_r0y1f")
@@ -10,8 +12,11 @@ gun_data = ExtResource("2_0eelq")
 
 [node name="Gunmesh" type="MeshInstance3D" parent="." unique_id=1272868140]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1987765425]
-
 [node name="StateMachine" type="Node" parent="." unique_id=1816745891 node_paths=PackedStringArray("gun")]
 script = ExtResource("2_sgm26")
 gun = NodePath("..")
+
+[node name="fps_arms_scene_root" parent="." unique_id=28983718 instance=ExtResource("4_p4vtp")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.097789705, -0.22404301)
+
+[node name="pistol_scene_root" parent="fps_arms_scene_root" unique_id=1922651016 instance=ExtResource("5_5hdhi")]
