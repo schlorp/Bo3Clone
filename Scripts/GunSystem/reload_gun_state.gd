@@ -22,3 +22,10 @@ func setup_transitions() -> void:
 			func():	return reload_done && state_machine.gun.current_ammo <= 0
 		)
 	)
+
+func enter_state() -> void:
+	reload_done = false
+
+	await state_machine.gun.reload()
+
+	reload_done = true
