@@ -30,7 +30,7 @@ func update_state(_delta: float) -> void:
 
 
 func enter_state() -> void:
-	is_automatic = state_machine.gun.gun_data.is_automatic
+	is_automatic = state_machine.gun.gun_data.is_automatic_cycling
 	fire_rate = state_machine.gun.gun_data.fire_rate
 
 	cycling_done = false

@@ -11,13 +11,19 @@ var current_ammo: int
 #gun stats
 var fire_rate: float
 var damage: int
-var is_automatic: bool
+var is_automatic_cycling: bool
+
+#fire modes
+var available_fire_modes: Array[Enums.FireMode]
+var default_fire_mode: Enums.FireMode
+var current_fire_mode: Enums.FireMode
 
 #reload stats
 var reload_time: float
 var reload_time_empty: float
 
 signal fired()
+signal fire_mode_switched(new_fire_mode: Enums.FireMode)
 
 
 func _ready() -> void:
@@ -27,7 +33,11 @@ func _ready() -> void:
 
 	fire_rate = gun_data.fire_rate
 	damage = gun_data.damage
-	is_automatic = gun_data.is_automatic
+	is_automatic_cycling = gun_data.is_automatic_cycling
+
+	available_fire_modes = gun_data.available_fire_modes
+	default_fire_mode = gun_data.default_fire_mode
+	current_fire_mode = default_fire_mode
 
 	reload_time = gun_data.reload_time
 	reload_time_empty = gun_data.reload_time_empty
@@ -38,3 +48,16 @@ func fire() -> void:
 		current_ammo -= 1
 		emit_signal("fired")
 		print("Fired! Current Ammo: %d" % current_ammo)
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("game_switch_fire_mode"):
+		switch_fire_mode()
+
+
+func switch_fire_mode() -> void:
+	var current_index = available_fire_modes.find(current_fire_mode)
+	var next_index = (current_index + 1) % available_fire_modes.size()
+	current_fire_mode = available_fire_modes[next_index]
+
+	emit_signal("fire_mode_switched", current_fire_mode)

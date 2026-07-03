@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_tgajo")
-fire_rate = 0.3
+fire_rate = 0.05
+available_fire_modes = Array[int]([0, 1])
+default_fire_mode = 0
 metadata/_custom_type_script = "uid://bqod0w3sek4tw"
