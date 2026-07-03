@@ -14,6 +14,10 @@ class_name WeaponResource
 @export var available_fire_modes: Array[Enums.FireMode]
 @export var default_fire_mode: Enums.FireMode = Enums.FireMode.AUTOMATIC
 
+@export_subgroup("Burst stats")
+@export var burst_count: int = 3
+@export var burst_delay: float = 0.1
+
 @export_subgroup("Reload stats")
 @export var reload_time: float = 2.0
 @export var reload_time_empty: float = 3.0

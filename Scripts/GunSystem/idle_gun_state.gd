@@ -41,6 +41,8 @@ func handle_transition_with_fire_mode() -> bool:
 			return true
 
 	elif current_fire_mode == Enums.FireMode.BURST:
-		pass
+		if Input.is_action_just_pressed("game_fire"):
+			state_machine.gun.start_burst()
+			return true
 
 	return false

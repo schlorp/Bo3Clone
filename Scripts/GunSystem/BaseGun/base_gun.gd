@@ -18,6 +18,12 @@ var available_fire_modes: Array[Enums.FireMode]
 var default_fire_mode: Enums.FireMode
 var current_fire_mode: Enums.FireMode
 
+#burst stats
+var burst_count: int
+var current_burst_count: int = 0
+var in_burst: bool = false
+var burst_delay: float
+
 #reload stats
 var reload_time: float
 var reload_time_empty: float
@@ -51,7 +57,7 @@ func fire() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("game_switch_fire_mode"):
+	if Input.is_action_just_pressed("game_switch_fire_mode") && !in_burst:
 		switch_fire_mode()
 
 
@@ -61,3 +67,8 @@ func switch_fire_mode() -> void:
 	current_fire_mode = available_fire_modes[next_index]
 
 	emit_signal("fire_mode_switched", current_fire_mode)
+
+func start_burst() -> void:
+	if !in_burst:
+		in_burst = true
+		current_burst_count = 0
