@@ -10,8 +10,15 @@ func setup_transitions() -> void:
 	add_transition(
 		Transition.new(
 			self,
+			state_machine.available_states["EmptyState"],
+			func():	return Input.is_action_just_pressed("game_fire") && state_machine.gun.current_ammo <= 0
+		)
+	)
+	add_transition(
+		Transition.new(
+			self,
 			state_machine.available_states["FiringState"],
-			func():	return Input.is_action_just_pressed("game_fire")
+			func():	return Input.is_action_just_pressed("game_fire") && state_machine.gun.current_ammo > 0
 		)
 	)
 	add_transition(

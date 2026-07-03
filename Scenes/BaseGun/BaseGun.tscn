@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cft58uqalunve"]
+
+[ext_resource type="Script" uid="uid://cmg463xo7kp64" path="res://Scripts/GunSystem/BaseGun/base_gun.gd" id="1_r0y1f"]
+[ext_resource type="Resource" uid="uid://crpehuwmx8xod" path="res://Resources/Guns/TestGun/test_auto_gun.tres" id="2_0eelq"]
+[ext_resource type="Script" uid="uid://cs1e8uoa1goue" path="res://Scripts/GunSystem/gun_state_machine.gd" id="2_sgm26"]
+
+[node name="BaseGun" type="Node3D" unique_id=47121967]
+script = ExtResource("1_r0y1f")
+gun_data = ExtResource("2_0eelq")
+
+[node name="Gunmesh" type="MeshInstance3D" parent="." unique_id=1272868140]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1987765425]
+
+[node name="StateMachine" type="Node" parent="." unique_id=1816745891 node_paths=PackedStringArray("gun")]
+script = ExtResource("2_sgm26")
+gun = NodePath("..")

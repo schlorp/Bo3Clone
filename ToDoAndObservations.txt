@@ -64,4 +64,4 @@ create a gym
 start gun system - doing
 
 huidige notes:
--
+- later maybe add rounds in the chamber.

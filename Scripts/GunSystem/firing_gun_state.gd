@@ -8,6 +8,7 @@ func _init(_statemachine: StateMachine) -> void:
 	state_name = "FiringState"
 
 func setup_transitions() -> void:
+	
 	add_transition(
 		Transition.new(
 			self,
@@ -15,10 +16,10 @@ func setup_transitions() -> void:
 			func():	return fire_done
 		)
 	)
-	add_transition(
-		Transition.new(
-			self,
-			state_machine.available_states["EmptyState"],
-			func():	return fire_done && state_machine.gun.current_ammo <= 0
-		)
-	)
+
+func enter_state() -> void:
+	fire_done = false
+
+	await state_machine.gun.fire()
+
+	fire_done = true
