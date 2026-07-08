@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://chl0b8ajl0ht"]
-
-[ext_resource type="Script" uid="uid://bqod0w3sek4tw" path="res://Scripts/GunSystem/weapon_resource.gd" id="1_nm6av"]
-
-[resource]
-script = ExtResource("1_nm6av")
-fire_rate = 0.5
-is_automatic = false
-metadata/_custom_type_script = "uid://bqod0w3sek4tw"

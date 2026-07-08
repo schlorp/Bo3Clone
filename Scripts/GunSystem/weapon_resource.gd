@@ -23,6 +23,7 @@ class_name WeaponResource
 @export var reload_time_empty: float = 3.0
 
 @export_subgroup("Animations")
-@export var idle_animation: Animation
-@export var firing_animation: Animation
-@export var reload_animation: Animation
+@export var idle_animation: String = "GUN_idle"
+@export var firing_animation: String = "GUN_fire"
+@export var reload_animation: String = "GUN_reload"
+@export var walk_animation: String = "GUN_walk"

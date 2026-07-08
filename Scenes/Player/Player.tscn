@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bjgv2ocvs2xnr" path="res://Scripts/Player/player.gd" id="1_t26db"]
 [ext_resource type="PackedScene" uid="uid://cdcsm1ppijxfo" path="res://Scenes/Movement/MovementNode.tscn" id="2_ft8w5"]
 [ext_resource type="Animation" uid="uid://bel7fn8f8gvor" path="res://Animations/Crouch.res" id="3_fk5o5"]
-[ext_resource type="PackedScene" uid="uid://cft58uqalunve" path="res://Scenes/BaseGun/BaseGun.tscn" id="3_ji083"]
+[ext_resource type="PackedScene" uid="uid://cft58uqalunve" path="res://Scenes/GunAndArms/GunAndArms.tscn" id="3_ji083"]
 [ext_resource type="Animation" uid="uid://dyeqaxbs754eh" path="res://Animations/Idle.res" id="4_825xp"]
 [ext_resource type="Script" uid="uid://c4fy8nk5tqp28" path="res://Scripts/Movement/movement_state_machine.gd" id="5_jmcll"]
 [ext_resource type="Script" uid="uid://y5h3tndw4mb2" path="res://Scripts/Movement/movementnodedebug.gd" id="6_4wape"]
@@ -140,9 +140,8 @@ script = ExtResource("1_h54ih")
 [node name="Camera3D" type="Camera3D" parent="Neck/Recoil" unique_id=1086442252]
 near = 0.001
 
-[node name="ItemHolder" type="Node3D" parent="Neck/Recoil/Camera3D" unique_id=1222290975]
-
-[node name="BaseGun" parent="Neck/Recoil/Camera3D/ItemHolder" unique_id=47121967 instance=ExtResource("3_ji083")]
+[node name="GunAndArms" parent="Neck/Recoil/Camera3D" unique_id=47121967 instance=ExtResource("3_ji083")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1273782557]
 shape = SubResource("CapsuleShape3D_fk5o5")

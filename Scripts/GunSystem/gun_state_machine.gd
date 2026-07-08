@@ -1,6 +1,7 @@
 extends StateMachine
 
 @export var gun: BaseGun
+var animation_handler: PlayerFPSAnimationHandler = null
 
 func fill_available_states() -> void:
 	var idle_state = IdleGunState.new(self)
@@ -22,6 +23,8 @@ func fill_available_states() -> void:
 
 func _ready() -> void:
 	super._ready()
+	animation_handler = gun.get_child(1) as PlayerFPSAnimationHandler
+
 	switch_to_state("IdleState")
 
 func _process(delta: float) -> void:

@@ -17,6 +17,7 @@ background_mode = 2
 sky = SubResource("Sky_j5yw3")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gl6un"]
 
