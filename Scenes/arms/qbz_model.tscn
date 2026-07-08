@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://csdp3ef0rboxa"]
+
+[ext_resource type="PackedScene" uid="uid://bovix31ttjoiq" path="res://Models/qbz_model.glb" id="1_6s3xf"]
+[ext_resource type="AnimationLibrary" uid="uid://d3iugeqldx1s1" path="res://Models/gun_animations.glb" id="2_1imjs"]
+
+[node name="qbz_model" unique_id=196386219 instance=ExtResource("1_6s3xf")]
+
+[node name="Skeleton3D" parent="Gun_rig" parent_id_path=PackedInt32Array(1048667939) index="0" unique_id=1008036603]
+bones/0/position = Vector3(1.0213528, 4.5568132, 1.7253702)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/6/rotation = Quaternion(-0.58881456, -0.39153215, 0.58881456, -0.3915322)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1175026737]
+libraries/gun_animations = ExtResource("2_1imjs")

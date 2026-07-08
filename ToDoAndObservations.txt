@@ -66,5 +66,5 @@ start gun system - doing
 huidige notes:
 - later maybe add rounds in the chamber.
 - de gun's worden scenes waar dus steeds tussen word geswitched
-- de gun resource heeft een array met anims, dan word gewoon de naam van de anim gebruikt bij het spelen van de anim
-- opnieuw alles importen en maak een setup, hoe will je die wapens gebruiken in scene tree. En hoe wil je alles referencen
+- voor de gun animations, parent de gun aan de hand, maak generic animations met de arms en dan kan de gun zelf doen
+- denk aan of alle animaties beginnen op 1

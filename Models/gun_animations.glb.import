@@ -1,15 +1,15 @@
 [remap]
 
-importer="scene"
+importer="animation_library"
 importer_version=1
-type="PackedScene"
-uid="uid://dmalm1s2n1o8m"
-path="res://.godot/imported/gun.glb-f5738a9e5697ea512130f6da6eef4887.scn"
+type="AnimationLibrary"
+uid="uid://d3iugeqldx1s1"
+path="res://.godot/imported/gun_animations.glb-734e200f7238a42c304f4a9a432d058c.res"
 
 [deps]
 
-source_file="res://Models/gun.glb"
-dest_files=["res://.godot/imported/gun.glb-f5738a9e5697ea512130f6da6eef4887.scn"]
+source_file="res://Models/gun_animations.glb"
+dest_files=["res://.godot/imported/gun_animations.glb-734e200f7238a42c304f4a9a432d058c.res"]
 
 [params]
 

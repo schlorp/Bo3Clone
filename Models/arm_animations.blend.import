@@ -1,15 +1,15 @@
 [remap]
 
-importer="animation_library"
+importer="scene"
 importer_version=1
-type="AnimationLibrary"
-uid="uid://drdb5vn740kt7"
-path="res://.godot/imported/arm_animations.blend-acf3e0f9722c6e452a7abfde2d8bfcb1.res"
+type="PackedScene"
+uid="uid://dvvys1h8758cc"
+path="res://.godot/imported/arm_animations.blend-acf3e0f9722c6e452a7abfde2d8bfcb1.scn"
 
 [deps]
 
 source_file="res://Models/arm_animations.blend"
-dest_files=["res://.godot/imported/arm_animations.blend-acf3e0f9722c6e452a7abfde2d8bfcb1.res"]
+dest_files=["res://.godot/imported/arm_animations.blend-acf3e0f9722c6e452a7abfde2d8bfcb1.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c6e78snw8d8jm"
-path="res://.godot/imported/armsandgun.blend-0cff838d17d4fcb653ddffcbac4ac9ae.scn"
+uid="uid://dtuxv45i2dcot"
+path="res://.godot/imported/arms_and_gun.blend-dd878395caeaa28086125b5b5e0ba44a.scn"
 
 [deps]
 
-source_file="res://Models/armsandgun.blend"
-dest_files=["res://.godot/imported/armsandgun.blend-0cff838d17d4fcb653ddffcbac4ac9ae.scn"]
+source_file="res://Models/arms_and_gun.blend"
+dest_files=["res://.godot/imported/arms_and_gun.blend-dd878395caeaa28086125b5b5e0ba44a.scn"]
 
 [params]
 
